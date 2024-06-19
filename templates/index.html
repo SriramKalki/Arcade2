@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market Predictor</title>
+    <script>
+        async function getPrediction() {
+            const ticker = document.getElementById('ticker').value;
+            const response = await fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ ticker: ticker }),
+            });
+            const data = await response.json();
+            document.getElementById('result').innerHTML = `Prediction for ${data.ticker}: $${data.prediction.toFixed(2)}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Stock Market Predictor</h1>
+    <form onsubmit="event.preventDefault(); getPrediction();">
+        <label for="ticker">Stock Ticker:</label>
+        <input type="text" id="ticker" name="ticker">
+        <button type="submit">Predict</button>
+    </form>
+    <div id="result"></div>
+</body>
+</html>
