@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About the Stock Market Predictor Bot</title>
+</head>
+<body>
+    <h1>About the Stock Market Predictor Bot</h1>
+    <p>This bot uses a machine learning model to predict future stock prices based on historical data. Here's how it works:</p>
+    
+    <h2>Data Collection</h2>
+    <p>We collect historical stock data from Yahoo Finance using the <a href="https://pypi.org/project/yfinance/">yfinance</a> library. The data includes the daily closing prices of the stock.</p>
+    
+    <h2>Data Preprocessing</h2>
+    <p>The collected data is scaled using the MinMaxScaler from the <a href="https://scikit-learn.org/">scikit-learn</a> library. This scaling is essential for improving the model's performance.</p>
+    
+    <h2>Model</h2>
+    <p>We use a Long Short-Term Memory (LSTM) neural network, which is a type of recurrent neural network (RNN) suitable for time series prediction. The model is built using the <a href="https://www.tensorflow.org/">TensorFlow</a> and <a href="https://keras.io/">Keras</a> libraries.</p>
+    
+    <a href="/">Back to Home</a>
+</body>
+</html>

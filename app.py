@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 # Function to load and preprocess data
 def load_and_preprocess_data(ticker):
-    data = yf.download(ticker, start="2010-01-01", end="2021-01-01")
+    data = yf.download(ticker, start="2010-01-01", end="2023-01-01")
     scaler = MinMaxScaler(feature_range=(0, 1))
     scaled_data = scaler.fit_transform(data['Close'].values.reshape(-1, 1))
     return data, scaled_data, scaler
@@ -29,9 +29,13 @@ def create_model():
 def index():
     return render_template('index.html')
 
+@app.route('/info')
+def info():
+    return render_template('info.html')
+
 @app.route('/predict', methods=['POST'])
 def predict():
-    ticker = request.form['ticker']
+    ticker = request.json['ticker']
     data, scaled_data, scaler = load_and_preprocess_data(ticker)
     
     # Prepare the test data
